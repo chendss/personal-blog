@@ -1,6 +1,6 @@
-# blog-main
+# blog
 
-> My rad Nuxt.js project
+> My groovy Nuxt.js project
 
 ## Build Setup
 

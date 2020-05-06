@@ -1,0 +1,9 @@
+{
+  "prettier.semi": true,
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/",
+    "~": "${workspaceRoot}/",
+    "~~": "${workspaceRoot}/",
+    "@@": "${workspaceRoot}/"
+  },
+}

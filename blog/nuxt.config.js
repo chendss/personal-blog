@@ -35,13 +35,15 @@ module.exports = {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration

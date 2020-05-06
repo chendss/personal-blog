@@ -3,10 +3,10 @@
     <div>
       <logo />
       <h1 class="title">
-        blog-main
+        blog
       </h1>
       <h2 class="subtitle">
-        My rad Nuxt.js project
+        My groovy Nuxt.js project
       </h2>
       <div class="links">
         <a
