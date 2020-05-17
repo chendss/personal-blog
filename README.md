@@ -1,7 +1,16 @@
-# 博客项目
+# blog
 
-分成 3 个部分
+个人博客展示与发布系统
 
--   博客首页、文章页
--   博客后台管理
--   后端服务
+## 技术栈
+
+### 前端
+
+- vue
+- nuxt
+- vuex
+
+### 后端
+
+- node
+- [levelDB](https://github.com/Level/level)
