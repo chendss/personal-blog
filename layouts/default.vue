@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <nuxt />
+  <div id="layout">
     <div class="nav-left">
-      <img sizes="cover"
-        src="https://ae01.alicdn.com/kf/Ha8ee6645c8c347e68f39d820044f4fdem.jpg">
+      <img src="https://ae01.alicdn.com/kf/H7f2b5132a5034125b82295bb5cb34db0j.jpg">
     </div>
+    <nuxt class="nuxt" />
   </div>
 </template>
 

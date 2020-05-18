@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+
+  * {
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h5 {
+    font-weight           : lighter;
+    margin                : 0;
+    color                 : #333333;
+    -webkit-font-smoothing: antialiased;
+    text-shadow           : 0 1px 1px rgba(0, 0, 0, 0.4);
+  }
+
+  p {
+    margin : 0;
+    padding: 0;
+  }
+
+  #layout {
+    display: flex;
+
+    .nav-left {
+      top            : 0;
+      left           : 0;
+      right          : 0;
+      z-index        : -1;
+      margin         : auto;
+      height         : 100vh;
+      display        : flex;
+      flex           : 1 1 auto;
+      overflow       : hidden;
+      align-items    : center;
+      justify-content: center;
+
+      img {
+        width     : 100%;
+        height    : 100%;
+        object-fit: cover;
+      }
+    }
+
+    .nuxt {
+      transition: all 0.15s;
+    }
+  }
+}

@@ -1,3 +1,3 @@
 <template>
-  <div>sss</div>
+  <div></div>
 </template>
