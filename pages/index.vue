@@ -7,12 +7,22 @@
       </div>
     </div>
     <div class="bubbles-box">
-      <div class="air-bubbles"
+      <!-- <div class="air-bubbles"
         v-for="i in 200"
-        :key="i"></div>
+        :key="i"></div> -->
+      <canvas id="id-home-top"></canvas>
     </div>
   </div>
 </template>
+
+<script>
+import bubbleAnimate from '@/static/utils/bubbleAnimate'
+export default {
+  mounted () {
+    bubbleAnimate('#id-home-top')
+  }
+}
+</script>
 
 <style lang="scss">
 .home-page {
@@ -49,7 +59,8 @@
       display: none !important;
     }
   }
-  .bubbles-box {
+  .bubbles-box,
+  #id-home-top {
     left: 0;
     bottom: 0;
     width: 100%;
