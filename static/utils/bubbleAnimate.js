@@ -1,65 +1,81 @@
-import { merge, q, random, rang } from "."
+import { merge, q, random, rang, manyFunction } from "."
 
 class Circle {
-  constructor(settings, ctx) {
+  constructor(settings, ctx, config) {
     this.pos = {}
     this.settings = settings
     this.ctx = ctx
+    this.width = config.width
+    this.height = config.height
     this.init()
   }
 
+
   randomColor () {
-    var r = Math.floor(Math.random() * 255)
-    var g = Math.floor(Math.random() * 255)
-    var b = Math.floor(Math.random() * 255)
-    var alpha = Math.random().toPrecision(2)
+    const r = Math.floor(Math.random() * 255)
+    const g = Math.floor(Math.random() * 255)
+    const b = Math.floor(Math.random() * 255)
+    const alpha = Math.random().toPrecision(2)
     return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')'
   }
 
   init () {
-    this.pos.x = Math.random() * width
-    this.pos.y = height + Math.random() * 100
-    this.alpha = 0.1 + Math.random() * settings.clearOffset
+    this.pos.x = Math.random() * this.width
+    this.pos.y = this.height + Math.random() * 100
+    this.alpha = 0.1 + Math.random() * this.settings.clearOffset
     this.scale = 0.1 + Math.random() * 0.3
     this.speed = Math.random()
     if (this.settings.color === 'random') {
       this.color = randomColor()
     }
     else {
-      this.color = settings.color
+      this.color = this.settings.color
     }
   }
 
   draw () {
     if (this.alpha <= 0) {
-      init()
+      this.init()
     }
     this.pos.y -= this.speed
     this.alpha -= 0.0005
-    ctx.beginPath()
-    ctx.arc(this.pos.x, this.pos.y, this.scale * settings.radius, 0, 2 * Math.PI, false)
-    ctx.fillStyle = this.color
-    ctx.fill()
-    ctx.closePath()
+    this.ctx.beginPath()
+    this.ctx.arc(this.pos.x, this.pos.y, this.scale * this.settings.radius, 0, 2 * Math.PI, false)
+    this.ctx.fillStyle = this.color
+    this.ctx.fill()
+    this.ctx.closePath()
   }
 }
 
 export default class {
   constructor(seletor, options = {}) {
-    this.width = null
-    this.height = null
     this.canvas = null
     this.ctx = null
     this.animateHeader = true
     this.circles = []
     this.settings = merge({
       color: 'rgba(255,255,255,.5)',
-      radius: 10,
-      density: 0.3,
+      radius: 16,
+      density: 0.1,
       clearOffset: 0.2
     }, options)
     this.container = q(seletor)
     this.id = random()
+  }
+
+
+  static new () {
+    const c = new this(...arguments)
+    c.main()
+    return c
+  }
+
+  get width () {
+    return this.container.offsetWidth
+  }
+
+  get height () {
+    return this.container.offsetHeight
   }
 
   /**
@@ -67,20 +83,20 @@ export default class {
    *
    */
   initCanvas () {
-    var canvasElement = document.createElement('canvas')
+    const canvasElement = document.createElement('canvas')
     canvasElement.id = this.id
-    container.appendChild(canvasElement)
+    this.container.appendChild(canvasElement)
     canvasElement.parentElement.style.overflow = 'hidden'
   }
 
   animate () {
     if (this.animateHeader) {
-      this.ctx.clearRect(0, 0, width, height)
-      for (var i in circles) {
-        circles[i].draw()
+      this.ctx.clearRect(0, 0, this.width, this.height)
+      for (let i in this.circles) {
+        this.circles[i].draw()
       }
     }
-    requestAnimationFrame(animate)
+    requestAnimationFrame(() => this.animate())
   }
 
   /**
@@ -88,21 +104,20 @@ export default class {
    *
    */
   initContainer () {
-    const width = this.container.offsetWidth
+    const width = this.width
+    const height = this.height
     const settings = this.settings
-    this.width = width
-    this.height = this.container.offsetHeight
     this.initCanvas()
-    this.canvas = document.getElementById('canvas')
+    this.canvas = q(`#${this.id}`)
     this.canvas.width = width
     this.canvas.height = height
-    this.ctx = canvas.getContext('2d')
+    this.ctx = this.canvas.getContext('2d')
     const circlesLength = width * settings.density
-    this.circles = rang(circlesLength).map(_ => new Circle())
+    this.circles = manyFunction(circlesLength, () => new Circle(this.settings, this.ctx, { width, height }))
     this.animate()
   }
 
-  scrollCheck () {
+  scrollCheck = () => {
     if (document.body.scrollTop > height) {
       this.animateHeader = false
     }
@@ -111,17 +126,15 @@ export default class {
     }
   }
 
-  resize () {
-    this.width = this.container.clientWidth
-    this.height = this.container.clientHeight
+  resize = () => {
     this.container.height = this.height + 'px'
     this.canvas.width = this.width
     this.canvas.height = this.height
   }
 
   addListeners () {
-    window.addEventListener('scroll', scrollCheck, false)
-    window.addEventListener('resize', resize, false)
+    window.addEventListener('scroll', this.scrollCheck, false)
+    window.addEventListener('resize', this.resize, false)
   }
 
   main () {

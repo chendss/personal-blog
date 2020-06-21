@@ -1,9 +1,14 @@
+@import './iconfont.scss';
+
 html {
   font-size                  : 62.5%;
   -webkit-tap-highlight-color: transparent;
 
   body {
-    margin: 0;
+    margin                     : 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing     : antialiased;
+    background                 : #fff;
 
     * {
       font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;

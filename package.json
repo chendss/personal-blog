@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "axios": "^0.19.2",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.4.11",
+    "element-ui": "2.13.2",
     "express": "^4.16.4",
     "koa": "^2.11.0",
     "koa-route": "^3.2.0",

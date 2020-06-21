@@ -1,5 +1,5 @@
 import Nedb from 'nedb'
-import { isArray, pick, map, mergeWith, get as lodashGet, isEqual, isObject, set, sum } from 'lodash'
+import { isArray, pick, map, mergeWith, get as lodashGet, isEqual, isObject, set, sum, cloneDeepWith, throttle } from 'lodash'
 
 export const log = function () {
   console.log(...arguments)
@@ -416,5 +416,122 @@ export const isMobile = function () {
 * @returns
 */
 export const rang = function (n) {
-  return Array(n).fill('').map((_, index) => index)
+  let num = Math.floor(n)
+  return Array(num).fill('').map((_, index) => index)
 }
+
+/**
+* 多次执行 handle 并且以列表形式返回
+*
+* @param {*} n
+* @param {*} handle
+* @returns {Array}
+*/
+export const manyFunction = function (n, handle) {
+  let result = []
+  rang(n).forEach((_, index) => {
+    result.push(handle(index))
+  })
+  return result
+}
+
+/**
+ * 在一个对象里面获得多个值
+ *
+ * @param {*} obj
+ * @param {Array} pathList
+ * @param {*} defaultValue
+ * @returns Array
+ */
+export const getBatch = function (obj, pathList, defaultValue) {
+  let result = []
+  for (let path of toArray(pathList)) {
+    const value = get(obj, path, defaultValue)
+    result.push(value)
+  }
+  return result
+}
+
+/**
+* 获得元素宽高
+*
+* @param {String} selector
+* @returns
+*/
+export const getEleSize = function (selector) {
+  const ele = q(selector)
+  const res = getBatch(getComputedStyle(ele), ['width', 'height'], [0, 0])
+  return res.map(i => Number(i.replace('px', '')))
+}
+
+/**
+* 鼠标与元素移动方向相反
+* 
+*
+* @param {String} parentSelector 不动区域选择器
+* @param {String} selector 运动区域选择器 （宽高必须大于parent）
+*/
+export const mouseMutex = function (parentSelector, selector, hz = 60) {
+  const parent = q(parentSelector)
+  const moveDom = q(selector)
+  // const [pw, ph] = getEleSize(parentSelector)
+  // const [w, h] = getEleSize(selector)
+  // joinStyle(moveDom, `margin-left:${(pw - w) / 2}px;margin-top:${(ph - h) / 2}px`)
+  const render = function (event) {
+    const [width, height] = getEleSize(parentSelector)
+    const center = { x: width / 2, y: height / 2 }
+    const x = get(event, 'clientX', 0)
+    const y = get(event, 'clientY', 0)
+    const proportion = 20
+    let dx = ((-1 * (x - center['x'])) / proportion).toFixed(4)
+    let dy = (-1 * (y - center['y']) / proportion).toFixed(4)
+    moveDom.setAttribute('style', `transform: translate3D(${dx}px,${dy}px,0px);`)
+  }
+  parent.addEventListener('mousemove', throttle(render, 1000 / hz))
+}
+
+/**
+* 数字转中文
+*
+* @param {*} num
+* @returns
+*/
+export const numberUppercase = function (num) {
+  let n = Number(num)
+  var upperCaseNumber = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '万', '亿']
+  var length = String(n).length
+  if (length == 1) {
+    return upperCaseNumber[n]
+  } else if (length == 2) {
+    if (n == 10) {
+      return upperCaseNumber[n]
+    } else if (n > 10 && n < 20) {
+      return '十' + upperCaseNumber[String(n).charAt(1)]
+    } else {
+      return upperCaseNumber[String(n).charAt(0)] + '十' + upperCaseNumber[String(n).charAt(1)].replace('零', '')
+    }
+  }
+}
+
+// /**
+// * 深拷贝改良版，遇到节点将不递归拷贝
+// *
+// * @param {*} source
+// * @param {Array} condictions 条件函数集 (item,key) 返回false时不拷贝
+// */
+// export const cloneDeep = function (source, condictions) {
+//   const cs = [...(condictions instanceof Array ? condictions : [])]
+//   return cloneDeepWith(source, (item, key) => {
+//     const list = [
+//       get(item, 'validateFieldsAndScroll', null) instanceof Function,
+//       ...cs,
+//     ]
+//     for (let c of list) {
+//       if (c instanceof Function && c(item, key) === false) {
+//         return item
+//       } else if (c === true) {
+//         return item
+//       }
+//     }
+//   })
+// }

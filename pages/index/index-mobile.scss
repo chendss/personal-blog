@@ -1,0 +1,66 @@
+@media screen and (max-width: 960px) {
+  .home-page {
+    .top {
+      .mask {
+        .layer {
+          img {}
+        }
+      }
+
+      #id-vibrant-mask {
+        svg {
+          display: none;
+        }
+
+        .vibrant-div {
+          opacity: 0.3;
+        }
+      }
+
+      .logo-box {
+        @media screen and (max-width: 960px) {
+          top   : 40px;
+          margin: 0 30px;
+        }
+
+        img {}
+
+        .menu {
+          svg {
+            font-size: 24px;
+          }
+        }
+      }
+
+      #post0 {
+        bottom: 60px;
+        top   : auto;
+        width : 70%;
+        left  : 5%;
+
+        p {
+          &:first-child {
+            display: none;
+          }
+        }
+
+        h2 {
+          text-align: left;
+          margin    : 0 10px 0 0;
+          font-size : 24px;
+
+          a {
+            color: #fff;
+          }
+        }
+
+        .content {
+          text-align: left;
+          margin    : 12px 24px 0 0;
+          color     : #f2f2f2;
+          font-size : 12px;
+        }
+      }
+    }
+  }
+}
