@@ -20,38 +20,11 @@
         </svg>
         <div class="vibrant-div"></div>
       </div>
-      <div class="logo-box">
-        <img :src="packUp==='true'?'/logo-home.png':'/logo.png'">
-        <div class="menu"
-          @click="menuClick">
-          <svg class="icon"
-            aria-hidden="true">
-            <use xlink:href="#icon-menu"
-              v-if="packUp==='true'"></use>
-            <use xlink:href="#icon-cha"
-              v-else></use>
-          </svg>
-        </div>
-      </div>
       <div id="post0">
         <p>{{today}}</p>
         <h2><a data-id="6643"
             class="posttitle">{{day.name}}</a></h2>
         <p class="content">{{day.text}}</p>
-      </div>
-      <div class="nav"
-        @click="menuClick"
-        :packup="packUp">
-        <div id="menu-menu"
-          class="menu">
-          <div class="menu_item"
-            rel="noopener noreferrer"
-            v-for="(item, index) in infos"
-            :key="index">
-            {{item.name}}
-          </div>
-        </div>
-        <p class="copyright">© 少爷. {{today}}. </p>
       </div>
     </div>
   </div>

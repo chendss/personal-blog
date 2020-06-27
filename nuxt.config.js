@@ -17,13 +17,13 @@ module.exports = {
       { rel: 'stylesheet', type: 'text/css', href: 'https://at.alicdn.com/t/font_543384_msjvd6htfjp.css' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1413038_khhz6x6vdy.js' }
+      { src: '//at.alicdn.com/t/font_1413038_6hj6km5sper.js' }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: '~/components/loading.vue',
   /*
   ** Global CSS
   */

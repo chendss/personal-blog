@@ -513,6 +513,14 @@ export const numberUppercase = function (num) {
   }
 }
 
+export const today = function () {
+  const date = new Date()
+  const nowMonth = date.getMonth() + 1
+  const strDate = date.getDate()
+  const year = date.getFullYear()
+  return `${numberUppercase(nowMonth)}月 ${strDate}, ${year}`
+}
+
 // /**
 // * 深拷贝改良版，遇到节点将不递归拷贝
 // *

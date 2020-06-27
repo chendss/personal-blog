@@ -1,4 +1,4 @@
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1080px) {
   .home-page {
     .top {
       .mask {
@@ -14,21 +14,6 @@
 
         .vibrant-div {
           opacity: 0.3;
-        }
-      }
-
-      .logo-box {
-        @media screen and (max-width: 960px) {
-          top   : 40px;
-          margin: 0 30px;
-        }
-
-        img {}
-
-        .menu {
-          svg {
-            font-size: 24px;
-          }
         }
       }
 
@@ -60,28 +45,6 @@
           color     : #f2f2f2;
           font-size : 12px;
         }
-      }
-
-      .nav {
-
-        &[packup='false'] {}
-
-        .menu {
-
-          width    : 80vw;
-          margin   : 160px auto 0;
-          flex-wrap: wrap;
-
-          .menu_item {
-            margin: 0 20px 20px 0;
-
-            &:hover {}
-          }
-
-          .menu_item+.menu_item {}
-        }
-
-        .copyright {}
       }
     }
   }
