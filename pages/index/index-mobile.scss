@@ -61,6 +61,29 @@
           font-size : 12px;
         }
       }
+
+      .nav {
+
+        &[packup='false'] {
+        }
+
+        .menu {
+          
+
+          .menu_item {
+            
+            &:hover {
+            }
+          }
+
+          .menu_item+.menu_item {
+          }
+        }
+
+        .copyright {
+          
+        }
+      }
     }
   }
 }

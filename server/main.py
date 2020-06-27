@@ -27,9 +27,14 @@ def fillter_empty(list_):
     return result
 
 
+def sort_item(item):
+    return len(item['text'])
+
+
 def save_res(res):
     list_ = union_by(res, 'text')
     list_ = fillter_empty(list_)
+    list_.sort(key=sort_item,)
     with open('../hua.json', 'w', encoding='utf8') as f:
         f.write(json.dumps(list_, sort_keys=True, ensure_ascii=False,
                            indent=4, separators=(',', ':'),))

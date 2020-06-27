@@ -67,6 +67,7 @@
       right      : 0;
       display    : flex;
       align-items: center;
+      z-index    : 9;
       top        : 70px;
       margin     : 0 60px;
       position   : absolute;
@@ -92,9 +93,9 @@
 
     #post0 {
       width   : 28%;
-      position: absolute;
       top     : 42%;
       left    : 10%;
+      position: absolute;
 
       p {
         &:first-child {
@@ -116,6 +117,60 @@
         color     : #fff;
         font-size : 14px;
         margin-top: 16px;
+      }
+    }
+
+    .nav {
+      top               : -100%;
+      position          : fixed;
+      height            : 100%;
+      display           : flex;
+      justify-content   : center;
+      width             : 100%;
+      flex-direction    : column;
+      background        : rgba(255, 255, 255, .97);
+      z-index           : 3;
+      -webkit-transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+      -moz-transition   : top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+      transition        : top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+
+      &[packup='false'] {
+        top: 0;
+      }
+
+      .menu {
+        margin-top     : 200px;
+        display        : flex;
+        justify-content: center;
+
+        .menu_item {
+          letter-spacing : 1px;
+          font-size      : 20px;
+          list-style     : none;
+          color          : #666;
+          align-items    : center;
+          justify-content: center;
+          cursor         : pointer;
+          display        : inline-flex;
+
+          &:hover {
+            color: #333;
+          }
+        }
+
+        .menu_item+.menu_item {
+          margin-left: 8px;
+        }
+      }
+
+      .copyright {
+        color          : #999;
+        font-size      : 14px;
+        width          : 100%;
+        display        : flex;
+        justify-content: center;
+        margin-bottom  : 30px;
+        margin-top     : auto;
       }
     }
   }

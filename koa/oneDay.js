@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     "name": "John Updike",
     "text": "沉浸在爱中的生命是最鲜活的。"

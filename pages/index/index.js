@@ -3,7 +3,27 @@ import { cloneDeep } from 'lodash'
 
 export default {
   data () {
-    return {}
+    return {
+      packUp: 'true',
+      infos: [
+        {
+          name: 'Contact',
+          url: '',
+        },
+        {
+          name: 'Links',
+          url: '',
+        },
+        {
+          name: 'Archive',
+          url: '',
+        },
+        {
+          name: 'Rainy',
+          url: '',
+        },
+      ]
+    }
   },
   computed: {
     today () {
@@ -18,9 +38,13 @@ export default {
     mouseMutex('#id-vibrant-mask', '#id-cover-layer', 120)
   },
   methods: {
+    menuClick () {
+      this.packUp = this.packUp === 'false' ? 'true' : 'false'
+    }
   },
   async asyncData ({ $axios }) {
-    console.log('waht', $axios)
-    return { a: 1 }
+    const res = await $axios.get('http://localhost:3001/oneDay')
+    const data = res.data
+    return { day: data }
   }
 }
