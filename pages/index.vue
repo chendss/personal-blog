@@ -21,7 +21,7 @@
         <div class="vibrant-div"></div>
       </div>
       <div class="logo-box">
-        <img src="/logo-home.png">
+        <img :src="packUp==='true'?'/logo-home.png':'/logo.png'">
         <div class="menu"
           @click="menuClick">
           <svg class="icon"
