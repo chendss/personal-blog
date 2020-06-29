@@ -27,6 +27,41 @@
         <p class="content">{{day.text}}</p>
       </div>
     </div>
+    <div class="main"
+      type="home-page">
+      <div class="article-list">
+        <div class="article"
+          v-for="(item, index) in remote.list"
+          :key="item.id">
+          <div class="left">
+            <Icon icon="icon-history"
+              :text="item.time"
+              class="time"></Icon>
+            <div class="focus">
+              <Icon icon="icon-view"
+                :text="item.browse"
+                class="browse"></Icon>
+              <Icon icon="icon-pinglun1"
+                :text="item.comments"
+                class="comments"></Icon>
+              <Icon icon="icon-yonghu"
+                :text="item.author"
+                class="author"></Icon>
+            </div>
+            <div class="abstract">{{item.abstract}}</div>
+            <div class="operation">
+              <Icon icon="icon-gengduo"
+                class="op-more"></Icon>
+              <Icon icon="icon-tubiao09"
+                class="op-edit"></Icon>
+            </div>
+          </div>
+          <div class="right">
+            <img :src="item.cover">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script src="./index/index.js"></script>

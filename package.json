@@ -14,10 +14,13 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "axios": "^0.19.2",
+    "canvas-nest.js": "^2.0.4",
     "cross-env": "^5.2.0",
     "element-ui": "2.13.2",
     "express": "^4.16.4",
     "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-cors": "^0.0.16",
     "koa-route": "^3.2.0",
     "koa-router": "^9.0.1",
     "koa2-cors": "^2.0.6",

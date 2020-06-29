@@ -1,5 +1,8 @@
 
+const serverConfig = require('./server-config')
+
 module.exports = {
+  ...serverConfig,
   mode: 'universal',
   /*
   ** Headers of the page
@@ -17,7 +20,7 @@ module.exports = {
       { rel: 'stylesheet', type: 'text/css', href: 'https://at.alicdn.com/t/font_543384_msjvd6htfjp.css' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1413038_6hj6km5sper.js' }
+      { src: '//at.alicdn.com/t/font_1413038_e9i0au5dvuq.js' }
     ]
   },
   /*
@@ -35,7 +38,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '~/plugins/ctx-inject.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -67,5 +71,5 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },
 }
