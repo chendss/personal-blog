@@ -119,6 +119,30 @@
     opacity: 1 !important;
   }
 }
+
+.cd-top {
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+  right: 25px;
+  top: -421px;
+  z-index: 99;
+  width: 70px;
+  height: 900px;
+  position: fixed;
+  background: url("/m.png");
+  animation: float 2s linear infinite;
+}
 </style>
 
 <style lang="scss" scoped>
@@ -195,11 +219,13 @@
     </div>
     <Icon icon="icon-xiangxia"
       class="arrow-down"></Icon>
+    <a class="cd-top"
+      @click="moveTop"></a>
   </div>
 </template>
 
 <script>
-import { today } from '@/static/utils'
+import { today, scrolMovePoint } from '@/static/utils'
 import Icon from '@/components/Icon'
 export default {
   name: 'defaultLayout',
@@ -232,6 +258,9 @@ export default {
   methods: {
     menuClick () {
       this.packUp = this.packUp === 'false' ? 'true' : 'false'
+    },
+    moveTop () {
+      scrolMovePoint(0, 30)
     }
   },
 }

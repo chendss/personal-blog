@@ -1,4 +1,5 @@
 import Icon from '@/components/Icon'
+import Particles from '@/components/Particles'
 import { mouseMutex, today } from '@/static/utils'
 
 export default {
@@ -7,7 +8,7 @@ export default {
       today: today(),
     }
   },
-  components: { Icon },
+  components: { Icon, Particles },
   computed: {
   },
   mounted () {

@@ -2,7 +2,8 @@
 <style lang="scss" scoped src="./index/index-mobile.scss"></style>
 <template>
   <div class="home-page">
-    <div class="top">
+    <div class="top"
+      id="id-top">
       <div class="mask"
         id="id-cover-mask">
         <div class="layer"
@@ -28,32 +29,34 @@
       </div>
     </div>
     <div class="main"
-      type="home-page">
+      id="id-home-main"
+      type="homepage">
       <div class="article-list">
         <div class="article"
-          v-for="(item, index) in remote.list"
+          v-for="(item) in remote.list"
           :key="item.id">
           <div class="left">
-            <Icon icon="icon-history"
-              :text="item.time"
-              class="time"></Icon>
+            <Icon icon="icon-shijian"
+              :text="`发布于${item.time}`"
+              type="time"></Icon>
+            <div class="title">{{item.title}}</div>
             <div class="focus">
-              <Icon icon="icon-view"
-                :text="item.browse"
-                class="browse"></Icon>
+              <Icon icon="icon-yanjing1"
+                :text="`${item.browse}热度`"
+                type="browse"></Icon>
               <Icon icon="icon-pinglun1"
-                :text="item.comments"
-                class="comments"></Icon>
-              <Icon icon="icon-yonghu"
+                :text="`${item.comments}条评论`"
+                type="comments"></Icon>
+              <Icon icon="icon-wode"
                 :text="item.author"
-                class="author"></Icon>
+                type="author"></Icon>
             </div>
-            <div class="abstract">{{item.abstract}}</div>
+            <div class="abstract">摘要：{{item.abstract}}</div>
             <div class="operation">
-              <Icon icon="icon-gengduo"
-                class="op-more"></Icon>
+              <Icon icon="icon-gengduo-copy"
+                type="op-more"></Icon>
               <Icon icon="icon-tubiao09"
-                class="op-edit"></Icon>
+                type="op-edit"></Icon>
             </div>
           </div>
           <div class="right">
@@ -61,6 +64,7 @@
           </div>
         </div>
       </div>
+      <Particles class="main-canvas"></Particles>
     </div>
   </div>
 </template>

@@ -521,25 +521,71 @@ export const today = function () {
   return `${numberUppercase(nowMonth)}月 ${strDate}, ${year}`
 }
 
-// /**
-// * 深拷贝改良版，遇到节点将不递归拷贝
-// *
-// * @param {*} source
-// * @param {Array} condictions 条件函数集 (item,key) 返回false时不拷贝
-// */
-// export const cloneDeep = function (source, condictions) {
-//   const cs = [...(condictions instanceof Array ? condictions : [])]
-//   return cloneDeepWith(source, (item, key) => {
-//     const list = [
-//       get(item, 'validateFieldsAndScroll', null) instanceof Function,
-//       ...cs,
-//     ]
-//     for (let c of list) {
-//       if (c instanceof Function && c(item, key) === false) {
-//         return item
-//       } else if (c === true) {
-//         return item
-//       }
-//     }
-//   })
-// }
+/**
+ * 滚动条动画移动到元素锚点
+ *
+ * @param {HTMLElement} ele 移动到的元素
+ * @param {number} [dy=window.outerHeight / 6] 偏移量
+ * @param {number} [time=5] 动画一帧的时间
+ */
+export const scrolMove = function (ele, dy = window.outerHeight / 6, time = 5) {
+  let total = docTop(ele) - dy
+  let distance = document.documentElement.scrollTop || document.body.scrollTop
+  // 计算每一小段的距离
+  let step = total / 50
+  let scrolMoveInterval = setInterval(() => {
+    if (distance < total) {
+      distance += step; // 移动一小段
+      document.body.scrollTop = distance
+      document.documentElement.scrollTop = distance; // 设定每一次跳动的时间间隔为10ms
+    }
+    else {
+      clearInterval(scrolMoveInterval)
+    }
+  }, time)
+}
+
+/**
+ * 获得元素距离文档顶部距离
+ *
+ * @param {HTMLElement} ele
+ * @returns
+ */
+export const docTop = function (ele) {
+  let top = ele.offsetTop
+  while (ele.offsetParent != null && (ele = ele.offsetParent)) {
+    top += ele.offsetTop
+  }
+  return top
+}
+
+/**
+ * 滚动条动画移动到对应坐标
+ *
+ * @param {Number} y 移动到对应坐标
+ * @param {number} [dy_=0] 偏移量
+ * @param {number} [time=5] 动画一帧的时间
+ */
+export const scrolMovePoint = function (y, speed = 50, time = 5) {
+  let distance = get(document, ['documentElement.scrollTop', 'body.scrollTop'])
+  const move = function (dy, n = 1) {
+    const k = setTimeout(() => {
+      distance += dy * n
+      if ((distance * n) >= (y * n)) {
+        clearTimeout(k)
+      } else {
+        set(document, 'documentElement.scrollTop', distance)
+        set(document, 'body.scrollTop', distance)
+        move(dy, n)
+      }
+    }, time)
+  }
+  if (y > distance) {
+    const dy = (y - distance) / speed
+    move(dy)
+  } else {
+    const dy = (distance - y) / speed
+    move(dy, -1)
+  }
+
+}

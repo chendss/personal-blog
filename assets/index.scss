@@ -1,5 +1,10 @@
 @import './iconfont.scss';
 
+@font-face {
+  font-family: 'Lato';
+  src        : url('/fontawesome-webfont.woff2');
+}
+
 html {
   font-size                  : 62.5%;
   -webkit-tap-highlight-color: transparent;
@@ -11,7 +16,7 @@ html {
     background                 : #fff;
 
     * {
-      font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+      font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
     h1,

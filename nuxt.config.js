@@ -17,10 +17,11 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://at.alicdn.com/t/font_543384_msjvd6htfjp.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_543384_msjvd6htfjp.css' },
+      { rel: 'preload', type: 'font.woff2', href: '/fontawesome-webfont.woff2' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1413038_e9i0au5dvuq.js' }
+      { src: '//at.alicdn.com/t/font_1413038_921rl1a27hh.js' }
     ]
   },
   /*
