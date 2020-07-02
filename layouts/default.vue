@@ -47,7 +47,7 @@
   .menu {
     margin-top: 200px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     .menu-item-box {
       display: inline-flex;
@@ -55,15 +55,20 @@
       justify-content: center;
       padding: 4px;
       .menu_item {
-        white-space: nowrap;
         color: #666;
         font-size: 20px;
         cursor: pointer;
         list-style: none;
+        white-space: nowrap;
         letter-spacing: 1px;
         align-items: center;
         display: inline-flex;
         justify-content: center;
+        /deep/ {
+          .icon {
+            font-size: 12px;
+          }
+        }
 
         &:hover {
           color: #333;
@@ -176,6 +181,7 @@
       width: 80vw;
       margin: 160px auto 0;
       flex-wrap: wrap;
+      justify-content: flex-start;
       .menu-item-box {
         .menu_item {
           font-size: 12px;
@@ -203,28 +209,38 @@
   <div id="layout">
     <nuxt class="nuxt" />
     <div class="logo-box">
-      <img src="/logo-home.png" v-show="packUp==='true'" />
-      <img src="/logo.png" v-show="packUp==='false'" />
-      <div class="menu" @click="menuClick">
+      <img src="/logo-home.png"
+        v-show="packUp==='true'" />
+      <img src="/logo.png"
+        v-show="packUp==='false'" />
+      <div class="menu"
+        @click="menuClick">
         <Icon :icon="packUp==='true'?'icon-menu':'icon-cha'"></Icon>
       </div>
     </div>
-    <div class="nav" :packup="packUp">
-      <div id="menu-menu" class="menu">
-        <div class="menu-item-box" v-for="(item, index) in infos" :key="index">
-          <Icon
-            class="menu_item"
+    <div class="nav"
+      :packup="packUp">
+      <div id="menu-menu"
+        class="menu">
+        <div class="menu-item-box"
+          v-for="(item, index) in infos"
+          :key="index">
+          <Icon class="menu_item"
             @click="navClick(item)"
             rel="noopener noreferrer"
             :icon="item.icon"
-            :text="item.name"
-          ></Icon>
+            :text="item.name"></Icon>
         </div>
       </div>
       <p class="copyright">© 少爷. {{today}}.</p>
     </div>
-    <Icon icon="icon-xiangxia" class="arrow-down" @click="moveBottom"></Icon>
-    <a class="cd-top" id="id-cd-top" @click="moveTop" :style="packUp==='true'?'':'display:none;'"></a>
+    <Icon icon="icon-xiangxia"
+      class="arrow-down"
+      @click="moveBottom"></Icon>
+    <a class="cd-top"
+      id="id-cd-top"
+      @click="moveTop"
+      :style="packUp==='true'?'':'display:none;'"></a>
   </div>
 </template>
 
@@ -235,12 +251,12 @@ import {
   getEleSize,
   scrollPoint,
   scrolMovePoint,
-} from "@/static/utils";
-import Icon from "@/components/Icon";
-import { throttle } from "lodash";
+} from "@/static/utils"
+import { throttle } from "lodash"
+import Icon from "@/components/Icon"
 export default {
   name: "defaultLayout",
-  data() {
+  data () {
     return {
       today: today(),
       packUp: "true",
@@ -257,50 +273,51 @@ export default {
         },
         {
           name: "分类",
-          url: ""
+          url: "",
+          icon: 'icon-fenlei'
         },
         {
           name: "个人简历",
-          url: ""
+          url: "",
+          icon: 'icon-jianli'
         }
       ]
     };
   },
   components: { Icon },
-  mounted() {
-    window.addEventListener("scroll", throttle(this.scroll.bind(this), 100));
-    this.scroll();
+  mounted () {
+    window.addEventListener("scroll", throttle(this.scroll.bind(this), 100))
+    this.scroll()
   },
   methods: {
-    menuClick() {
-      const body = document.body;
+    menuClick () {
+      const body = document.body
       if (this.packUp === "false") {
-        this.packUp = "true";
-        body.removeAttribute("style");
+        this.packUp = "true"
+        body.removeAttribute("style")
       } else {
-        body.setAttribute("style", "overflow:hidden;");
-        this.packUp = "false";
+        body.setAttribute("style", "overflow:hidden;")
+        this.packUp = "false"
       }
     },
-    scroll() {
-      const top = q("#id-cd-top");
+    scroll () {
+      const top = q("#id-cd-top")
       if (scrollPoint() < 30) {
-        top.setAttribute("top", "true");
+        top.setAttribute("top", "true")
       } else {
-        top.removeAttribute("top");
+        top.removeAttribute("top")
       }
     },
-    moveTop() {
-      scrolMovePoint(0, 30);
+    moveTop () {
+      scrolMovePoint(0, 30)
     },
-    moveBottom() {
-      const [width, height] = getEleSize("#id-top");
-      console.log("真的吗", height);
-      scrolMovePoint(height, 30);
+    moveBottom () {
+      const [width, height] = getEleSize("#id-top")
+      scrolMovePoint(height, 30)
     },
-    navClick(item) {
-      console.log("点击", item, this.$router);
-      this.$router.push(item.url);
+    navClick (item) {
+      console.log("点击", item, this.$router)
+      this.$router.push(item.url)
     }
   }
 };

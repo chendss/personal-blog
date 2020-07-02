@@ -21,7 +21,7 @@ module.exports = {
       { rel: 'preload', type: 'font.woff2', href: '/fontawesome-webfont.woff2' },
     ],
     script: [
-      { src: '//at.alicdn.com/t/font_1413038_921rl1a27hh.js' }
+      { src: '//at.alicdn.com/t/font_1413038_97vhth4nczv.js' }
     ]
   },
   /*
@@ -70,7 +70,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend (config, ctx) {
     }
   },
 }
