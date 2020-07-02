@@ -1,5 +1,6 @@
 <template>
-  <vue-particles color="#292929"
+  <vue-particles
+    color="#292929"
     :moveSpeed="4"
     v-if="!isMobile"
     :linesWidth="1"
@@ -14,23 +15,23 @@
     linesColor="#b00e25"
     :linesDistance="150"
     :particlesNumber="80"
-    clickMode="remove">
-  </vue-particles>
+    clickMode="remove"
+  ></vue-particles>
 </template>
 
 <script>
-import { isMobile } from '../static/utils'
+import { isMobile } from "../static/utils";
 
 export default {
-  data () {
+  data() {
     return {
       isMobile: false
-    }
+    };
   },
-  created () {
+  created() {
     if (process.client) {
-      this.isMobile = isMobile()
+      this.isMobile = isMobile();
     }
   }
-}
+};
 </script>

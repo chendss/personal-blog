@@ -40,7 +40,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    '~/plugins/ctx-inject.js'
+    '~/plugins/ctx-inject.js',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -66,11 +66,11 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, /^vue-particles/],
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   },
 }
