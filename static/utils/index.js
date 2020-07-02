@@ -560,6 +560,15 @@ export const docTop = function (ele) {
 }
 
 /**
+* 获得滚动条位置
+*
+* @returns
+*/
+export const scrollPoint = function () {
+  return get(document, ['documentElement.scrollTop', 'body.scrollTop'])
+}
+
+/**
  * 滚动条动画移动到对应坐标
  *
  * @param {Number} y 移动到对应坐标
@@ -567,12 +576,12 @@ export const docTop = function (ele) {
  * @param {number} [time=5] 动画一帧的时间
  */
 export const scrolMovePoint = function (y, speed = 50, time = 5) {
-  let distance = get(document, ['documentElement.scrollTop', 'body.scrollTop'])
+  let distance = scrollPoint()
   const move = function (dy, n = 1) {
-    const k = setTimeout(() => {
+    setTimeout(() => {
       distance += dy * n
       if ((distance * n) >= (y * n)) {
-        clearTimeout(k)
+        return
       } else {
         set(document, 'documentElement.scrollTop', distance)
         set(document, 'body.scrollTop', distance)
@@ -587,5 +596,4 @@ export const scrolMovePoint = function (y, speed = 50, time = 5) {
     const dy = (distance - y) / speed
     move(dy, -1)
   }
-
 }

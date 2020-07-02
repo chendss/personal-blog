@@ -38,8 +38,6 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.97);
   z-index: 3;
-  -webkit-transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
-  -moz-transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
   transition: top 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 
   &[packup="false"] {
@@ -135,13 +133,19 @@
     }
   }
   right: 25px;
-  top: -421px;
   z-index: 99;
   width: 70px;
   height: 900px;
   position: fixed;
+  cursor: pointer;
   background: url("/m.png");
-  animation: float 2s linear infinite;
+  top: calc(-50vh + (50vh - 450px));
+  // animation: float 2s linear infinite;
+  transition: all 0.25s;
+  &[top="true"] {
+    animation: none;
+    top: -900px;
+  }
 }
 </style>
 
@@ -220,13 +224,15 @@
     <Icon icon="icon-xiangxia"
       class="arrow-down"></Icon>
     <a class="cd-top"
+      id="id-cd-top"
       @click="moveTop"></a>
   </div>
 </template>
 
 <script>
-import { today, scrolMovePoint } from '@/static/utils'
+import { today, scrolMovePoint, scrollPoint, q } from '@/static/utils'
 import Icon from '@/components/Icon'
+import { throttle } from 'lodash'
 export default {
   name: 'defaultLayout',
   data () {
@@ -255,9 +261,20 @@ export default {
     }
   },
   components: { Icon },
+  mounted () {
+    window.addEventListener('scroll', throttle(this.scroll.bind(this), 100))
+  },
   methods: {
     menuClick () {
       this.packUp = this.packUp === 'false' ? 'true' : 'false'
+    },
+    scroll () {
+      const top = q('#id-cd-top')
+      if (scrollPoint() === 0) {
+        top.setAttribute('top', 'true')
+      } else {
+        top.removeAttribute('top')
+      }
     },
     moveTop () {
       scrolMovePoint(0, 30)
