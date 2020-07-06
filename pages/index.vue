@@ -34,6 +34,7 @@
       <div class="article-list">
         <div class="article"
           v-for="(item) in remote.list"
+          @click="articleClick(item)"
           :key="item.id">
           <div class="left">
             <Icon icon="icon-shijian"

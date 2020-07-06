@@ -1,7 +1,7 @@
 const Koa = require('koa')
+const router = require('koa-router')()
 const axios = require('axios')
 const consola = require('consola')
-const router = require('./app')
 const { Nuxt, Builder } = require('nuxt')
 const bodyParser = require('koa-bodyparser')
 const config = require('../nuxt.config.js')
@@ -27,8 +27,7 @@ const nuxtRender = async function () {
 
 const listen = function () {
   const { port, host } = config
-  app.listen(port)
-  axios.default.baseURL = `http://${host}:${port}`
+  app.listen(9962, '127.0.0.1')
   consola.ready({
     message: `服务启动 on http://${host}:${port}`,
     badge: true

@@ -1,8 +1,10 @@
 
-const serverConfig = require('./server-config')
-
 module.exports = {
-  ...serverConfig,
+  env: {
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:10098' : 'http://127.0.0.1:10098'
+  },
+  port: 9962,
+  host: '0.0.0.0',
   mode: 'universal',
   /*
   ** Headers of the page
@@ -40,7 +42,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    '~/plugins/ctx-inject.js',
+    '~/plugins/axios.js',
   ],
   /*
   ** Nuxt.js dev-modules

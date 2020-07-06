@@ -107,13 +107,14 @@
       align-items   : center;
 
       .article {
+        z-index         : 2;
         margin-top      : 8px;
-        width           : 960px;
-        max-width       : 80vw;
         margin-bottom   : 8px;
+        max-width       : 80vw;
         display         : flex;
         border-radius   : 10px;
-        z-index         : 2;
+        width           : 960px;
+        cursor          : pointer;
         transition      : box-shadow .3s ease;
         background-color: rgba(255, 255, 255, 1);
         box-shadow      : 0 1px 20px -6px rgba(0, 0, 0, .4);

@@ -1,6 +1,7 @@
 import Icon from '@/components/Icon'
 import Particles from '@/components/Particles'
 import { mouseMutex, today } from '@/static/utils'
+import axios from 'axios'
 
 export default {
   data () {
@@ -15,18 +16,21 @@ export default {
     mouseMutex('#id-vibrant-mask', '#id-cover-layer', 120)
   },
   methods: {
+    articleClick (articleItem) {
+      const { id } = articleItem
+      const url = `/article?articleId=${id}`
+      this.$router.push(url)
+    }
   },
-  async asyncData ({ $axios, app }) {
-    const { host, origin, port } = app.config
-    const url = path => `${origin}://${host}:${port}${path}`
+  async asyncData () {
     let result = {}
     const dayData = async function () {
-      const r = await $axios.get(url('/oneDay'))
+      const r = await axios.get('/oneDay')
       const data = r.data
       return data
     }
     const listData = async function () {
-      const r = await $axios.get(url('/homeData'))
+      const r = await axios.get('/homeData')
       const data = r.data
       return data
     }
