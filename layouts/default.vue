@@ -313,6 +313,7 @@ export default {
     navClick(item) {
       console.log("点击", item, this.$router);
       this.$router.push(item.url);
+      this.menuClick()
     }
   }
 };

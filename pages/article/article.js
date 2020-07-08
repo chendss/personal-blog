@@ -1,5 +1,4 @@
 import axios from "axios"
-import Markdown from 'vue-markdown'
 export default {
   data() {
     return {}
@@ -9,7 +8,6 @@ export default {
       console.log('sssss', html)
     }
   },
-  components: { Markdown },
   async asyncData({ query }) {
     const { articleId } = query
     const res = await axios.get('/articleData')
