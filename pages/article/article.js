@@ -1,19 +1,20 @@
 import axios from "axios"
 import Markdown from 'vue-markdown'
 export default {
-  data () {
+  data() {
     return {}
   },
   methods: {
-    save (html) {
+    save(html) {
       console.log('sssss', html)
     }
   },
   components: { Markdown },
-  async asyncData ({ query }) {
+  async asyncData({ query }) {
     const { articleId } = query
     const res = await axios.get('/articleData')
-    const article = res.data.data
-    return { article }
+    const article = res.data.html
+    const cover = res.data.cover
+    return { article, cover }
   }
 }

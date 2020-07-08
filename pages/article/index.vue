@@ -1,10 +1,13 @@
 <style lang="scss" scoped src="./index.scss"></style>
 
 <template>
-  <div class="markdown markdown-body">
-    <le-editor v-model="article"
-      hljs-css="dark"
-      @save="save"></le-editor>
+  <div class="article-box">
+    <div class="layer" id="id-cover-article">
+      <img :src="cover" />
+    </div>
+    <div class="markdown">
+      <le-preview ref="md-preview" :is-md="true" :value="article"></le-preview>
+    </div>
   </div>
 </template>
 
