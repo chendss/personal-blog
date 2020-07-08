@@ -41,7 +41,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui',
+    { src: '@/plugins/element-ui', ssr: false },
     '~/plugins/axios.js',
   ],
   /*
@@ -68,7 +68,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/, /^vue-particles/, /^vue-markdown/],
+    transpile: [/^element-ui/, /^vue-particles/, /^vue-markdown/, /^le-markdown-editor/, /^vue-meditor/],
     /*
     ** You can extend webpack config here
     */

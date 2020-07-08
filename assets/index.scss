@@ -5,6 +5,14 @@
   src        : url('/fontawesome-webfont.woff2');
 }
 
+html,
+body,
+#__nuxt,
+#__layout,
+#layout {
+  height: 100%;
+}
+
 html {
   font-size                  : 62.5%;
   -webkit-tap-highlight-color: transparent;

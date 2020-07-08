@@ -4,6 +4,11 @@ export default {
   data () {
     return {}
   },
+  methods: {
+    save (html) {
+      console.log('sssss', html)
+    }
+  },
   components: { Markdown },
   async asyncData ({ query }) {
     const { articleId } = query
