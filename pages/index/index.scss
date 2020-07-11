@@ -17,6 +17,7 @@
       transform          : translate3d(0px, 0px, 0px);
 
       .layer {
+        width              : 100%;
         top                : 0px;
         left               : 0px;
         margin             : 0;
@@ -148,9 +149,8 @@
 
             /deep/ {
               .icon {
-                font-size   : 16px;
-                margin-right: 6px;
-                color       : #989898;
+                font-size: 16px;
+                color    : #989898;
               }
             }
           }

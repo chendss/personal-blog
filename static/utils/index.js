@@ -460,6 +460,9 @@ export const getBatch = function (obj, pathList, defaultValue) {
 */
 export const getEleSize = function (selector) {
   const ele = q(selector)
+  if (ele == null) {
+    return
+  }
   const res = getBatch(getComputedStyle(ele), ['width', 'height'], [0, 0])
   return res.map(i => Number(i.replace('px', '')))
 }

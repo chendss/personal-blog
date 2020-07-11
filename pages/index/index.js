@@ -14,6 +14,7 @@ export default {
   },
   mounted () {
     mouseMutex('#id-vibrant-mask', '#id-cover-layer', 120)
+    console.log('fauiuu', this.remote)
   },
   methods: {
     articleClick (articleItem) {
@@ -30,8 +31,8 @@ export default {
       return data
     }
     const listData = async function () {
-      const r = await axios.get('/homeData')
-      const data = r.data
+      const r = await axios.get('/articleList?pageSize=5')
+      const data = r.data.data
       return data
     }
     result.day = await dayData()

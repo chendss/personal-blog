@@ -2,11 +2,15 @@
 
 <template>
   <div class="article-box">
-    <div class="layer" id="id-cover-article">
-      <img :src="cover" />
+    <div class="layer"
+      id="id-cover-article">
+      <img :src="article.cover" />
     </div>
     <div class="markdown">
-      <le-preview ref="md-preview" :is-md="true" :value="article"></le-preview>
+      <le-preview ref="md-preview"
+        hljs-css="dark"
+        :is-md="true"
+        :value="article.html"></le-preview>
     </div>
   </div>
 </template>

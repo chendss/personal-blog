@@ -33,7 +33,7 @@
       type="homepage">
       <div class="article-list">
         <div class="article"
-          v-for="(item) in remote.list"
+          v-for="(item) in remote"
           @click="articleClick(item)"
           :key="item.id">
           <div class="left">
@@ -43,16 +43,16 @@
             <div class="title">{{item.title}}</div>
             <div class="focus">
               <Icon icon="icon-yanjing1"
-                :text="`${item.browse}热度`"
+                :text="`${item.browse||0}热度`"
                 type="browse"></Icon>
               <Icon icon="icon-pinglun1"
-                :text="`${item.comments}条评论`"
+                :text="`${item.comments||0}条评论`"
                 type="comments"></Icon>
               <Icon icon="icon-wode"
-                :text="item.author"
+                :text="item.auth"
                 type="author"></Icon>
             </div>
-            <div class="abstract">摘要：{{item.abstract}}</div>
+            <div class="abstract">摘要：{{item.describe}}</div>
             <div class="operation">
               <Icon icon="icon-gengduo-copy"
                 type="op-more"></Icon>

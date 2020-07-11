@@ -11,6 +11,14 @@ body,
 #__layout,
 #layout {
   height: 100%;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+#layout>div:first-child {
+  width: 100%;
 }
 
 html {

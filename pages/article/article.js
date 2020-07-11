@@ -1,18 +1,15 @@
 import axios from "axios"
 export default {
-  data() {
+  data () {
     return {}
   },
-  methods: {
-    save(html) {
-      console.log('sssss', html)
-    }
+  mounted () {
+    console.log('popop', this.article)
   },
-  async asyncData({ query }) {
+  async asyncData ({ query }) {
     const { articleId } = query
-    const res = await axios.get('/articleData')
-    const article = res.data.html
-    const cover = res.data.cover
-    return { article, cover }
+    const res = await axios.get(`/article?id=${articleId}`)
+    const article = res.data.data
+    return { article }
   }
 }
