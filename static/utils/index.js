@@ -516,8 +516,8 @@ export const numberUppercase = function (num) {
   }
 }
 
-export const today = function () {
-  const date = new Date()
+export const today = function (d) {
+  let date = d == null ? new Date() : new Date(d)
   const nowMonth = date.getMonth() + 1
   const strDate = date.getDate()
   const year = date.getFullYear()
@@ -599,4 +599,15 @@ export const scrolMovePoint = function (y, speed = 50, time = 5) {
     const dy = (distance - y) / speed
     move(dy, -1)
   }
+}
+
+export const timestapToDate = function (t) {
+  let date = new Date(t)
+  let Y = date.getFullYear() + '-'
+  let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
+  let D = date.getDate() + ' '
+  let h = date.getHours() + ':'
+  let m = date.getMinutes() + ':'
+  let s = date.getSeconds()
+  return Y + M + D + h + m + s
 }

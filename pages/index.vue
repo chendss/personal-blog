@@ -28,45 +28,7 @@
         <p class="content">{{day.text}}</p>
       </div>
     </div>
-    <div class="main"
-      id="id-home-main"
-      type="homepage">
-      <div class="article-list">
-        <div class="article"
-          v-for="(item) in remote"
-          @click="articleClick(item)"
-          :key="item.id">
-          <div class="left">
-            <Icon icon="icon-shijian"
-              :text="`发布于${item.time}`"
-              type="time"></Icon>
-            <div class="title">{{item.title}}</div>
-            <div class="focus">
-              <Icon icon="icon-yanjing1"
-                :text="`${item.browse||0}热度`"
-                type="browse"></Icon>
-              <Icon icon="icon-pinglun1"
-                :text="`${item.comments||0}条评论`"
-                type="comments"></Icon>
-              <Icon icon="icon-wode"
-                :text="item.auth"
-                type="author"></Icon>
-            </div>
-            <div class="abstract">摘要：{{item.describe}}</div>
-            <div class="operation">
-              <Icon icon="icon-gengduo-copy"
-                type="op-more"></Icon>
-              <Icon icon="icon-tubiao09"
-                type="op-edit"></Icon>
-            </div>
-          </div>
-          <div class="right">
-            <img :src="item.cover">
-          </div>
-        </div>
-      </div>
-      <Particles class="main-canvas"></Particles>
-    </div>
+    <HomeMain :remote="remote"></HomeMain>
   </div>
 </template>
 <script src="./index/index.js"></script>

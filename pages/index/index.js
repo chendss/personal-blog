@@ -1,4 +1,5 @@
 import Icon from '@/components/Icon'
+import HomeMain from './HomeMain'
 import Particles from '@/components/Particles'
 import { mouseMutex, today } from '@/static/utils'
 import axios from 'axios'
@@ -9,7 +10,7 @@ export default {
       today: today(),
     }
   },
-  components: { Icon, Particles },
+  components: { Icon, Particles, HomeMain },
   computed: {
   },
   mounted () {
@@ -17,11 +18,6 @@ export default {
     console.log('fauiuu', this.remote)
   },
   methods: {
-    articleClick (articleItem) {
-      const { id } = articleItem
-      const url = `/article?articleId=${id}`
-      this.$router.push(url)
-    }
   },
   async asyncData () {
     let result = {}
