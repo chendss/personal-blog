@@ -6,4 +6,58 @@
     "~~": "${workspaceRoot}/",
     "@@": "${workspaceRoot}/"
   },
+  "window.zoomLevel": 1,
+  "git.confirmSync": false,
+  "editor.fontFamily": "Source Code Pro",
+  "workbench.colorTheme": "One Dark Pro",
+  "npm-intellisense.importES6": true,
+  "npm-intellisense.importQuotes": "'",
+  "npm-intellisense.importLinebreak": ";\r\n",
+  "npm-intellisense.importDeclarationType": "const",
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2, //代码缩进修改成4个空格
+  // vscode默认启用了根据文件类型自动设置tabsize的选项
+  "editor.detectIndentation": false,
+  // 重新设定tabsize
+  // #每次保存的时候自动格式化
+  "editor.formatOnSave": true,
+  // #每次保存的时候将代码按eslint格式进行修复
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // #这个按用户自身习惯选择
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // // #让vue中的js按编辑器自带的ts格式进行格式化
+  // "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "files.autoSaveDelay": 150000,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.wordWrapColumn": 120,
+  "[scss]": {
+    "editor.defaultFormatter": "MikeBovenlander.formate"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "MikeBovenlander.formate"
+  },
+  "files.associations": {}
 }
