@@ -9,7 +9,7 @@
     </div>
     <div class="markdown">
       <le-preview ref="md-preview"
-        hljs-css="dark"
+        hljs-css="atomOneDark"
         :is-md="true"
         :value="article.html"></le-preview>
     </div>
