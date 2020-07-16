@@ -10,7 +10,20 @@
 - nuxt
 - vuex
 
+#### 功能点
+
+- 首页
+- 文章详情
+  - toc
+  - 评论
+  - 上一篇、下一篇
+  - 文章推荐
+- 文章列表
+- 分类
+- 标签
+- 全文搜索
+- 个人简历
+
 ### 后端
 
-- node
-- [levelDB](https://github.com/Level/level)
+参考 admin 项目
