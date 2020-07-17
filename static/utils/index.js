@@ -618,6 +618,11 @@ export const timestapToDate = function (t) {
   return Y + M + D + h + m + s
 }
 
+/**
+* 解析markdown目录
+*
+* @param {*} m
+*/
 export const markDownToc = function (m) {
   const codes = m.split('\n')
   const result = []
