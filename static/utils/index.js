@@ -601,6 +601,12 @@ export const scrolMovePoint = function (y, speed = 50, time = 5) {
   }
 }
 
+/**
+* 时间戳转日期
+*
+* @param {*} t
+* @returns
+*/
 export const timestapToDate = function (t) {
   let date = new Date(t)
   let Y = date.getFullYear() + '-'
@@ -610,4 +616,10 @@ export const timestapToDate = function (t) {
   let m = date.getMinutes() + ':'
   let s = date.getSeconds()
   return Y + M + D + h + m + s
+}
+
+export const markDownToc = function (m) {
+  const codes = m.split('\n')
+  const result = []
+
 }
