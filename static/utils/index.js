@@ -1,5 +1,5 @@
 import Nedb from 'nedb'
-import { mergeWith, get as lodashGet, isObject, set, sum, throttle } from 'lodash'
+import { mergeWith, get as lodashGet, isObject, set, sum, throttle, groupBy, countBy } from 'lodash'
 
 export const log = function () {
   console.log(...arguments)
@@ -619,12 +619,37 @@ export const timestapToDate = function (t) {
 }
 
 /**
+ * 计算markdown一行，当前标题的层级
+ *
+ * @param {*} code
+ * @returns
+ */
+const countMarkdown = function (code) {
+  let n = 0
+  while (code[n] === '#') {
+    n++
+  }
+  return n
+}
+
+/**
 * 解析markdown目录
 *
 * @param {*} m
 */
-export const markDownToc = function (m) {
-  const codes = m.split('\n')
-  const result = []
-
+export const markDownToc = function (m, level = '#') {
+  const codes = m.split('\n').filter(c => {
+    const list = [
+      c != null,
+      c !== '',
+      get(c, '[0]', '').trim() === '#'
+    ]
+    return list.every(l => l === true)
+  }).map((c, index) => ({ index, code: c }))
+  const result = {}
+  const groupList = groupBy(codes, c => countMarkdown(c.code))
+  console.log('????', groupList)
+  // for (let code of codes) {
+  //   console.log('康康', code)
+  // }
 }

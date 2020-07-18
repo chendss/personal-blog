@@ -10,6 +10,7 @@
     <div class="markdown">
       <le-preview ref="md-preview"
         hljs-css="atomOneDark"
+        toc
         :is-md="true"
         :value="article.html"></le-preview>
     </div>
