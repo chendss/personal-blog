@@ -637,7 +637,8 @@ const countMarkdown = function (code) {
 *
 * @param {*} m
 */
-export const markDownToc = function (m, level = '#') {
+export const markDownToc = function (m) {
+  const r = /#*/
   const codes = m.split('\n').filter(c => {
     const list = [
       c != null,
@@ -645,11 +646,6 @@ export const markDownToc = function (m, level = '#') {
       get(c, '[0]', '').trim() === '#'
     ]
     return list.every(l => l === true)
-  }).map((c, index) => ({ index, code: c }))
-  const result = {}
-  const groupList = groupBy(codes, c => countMarkdown(c.code))
-  console.log('????', groupList)
-  // for (let code of codes) {
-  //   console.log('康康', code)
-  // }
+  }).map(code => ({ level: countMarkdown(code), code: code.replace(r, '') }))
+  return codes
 }

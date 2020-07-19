@@ -1,14 +1,19 @@
 import axios from "axios"
-import { markDownToc } from '../../static/utils'
+import { markDownToc, timestapToDate } from '../../static/utils'
 
 export default {
   data () {
-    return {}
+    return {
+      toc: []
+    }
   },
   mounted () {
-    console.log('popop', this.article)
     const html = this.article.html
-    console.log('test', markDownToc(html))
+    this.toc = markDownToc(html)
+    console.log('object', this.article)
+  },
+  methods: {
+    timestapToDate,
   },
   async asyncData ({ query }) {
     const { articleId } = query

@@ -15,7 +15,6 @@ export default {
   },
   mounted () {
     mouseMutex('#id-vibrant-mask', '#id-cover-layer', 120)
-    console.log('fauiuu', this.remote)
   },
   methods: {
   },
