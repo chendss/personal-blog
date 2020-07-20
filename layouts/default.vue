@@ -275,7 +275,7 @@ export default {
         },
         {
           name: "归档",
-          url: "sss",
+          url: "/archive",
           icon: "icon-wenzhang1"
         },
         {
