@@ -1,0 +1,47 @@
+@media screen and (max-width: 1024px) {
+  .article-box {
+
+    .layer {
+
+
+      img {}
+
+      .vertical {
+
+
+        .page-title {}
+
+        .info {
+
+          .time {}
+
+          .tag {}
+
+          .tag+.tag {}
+        }
+      }
+    }
+
+    .content {
+
+
+      .content-canvas {}
+
+      .markdown {
+        width  : 100%;
+        padding: 16px 16px;
+        margin : 0;
+      }
+
+      .toc {
+        display: none;
+
+        .toc-item {
+
+
+          &:hover {}
+        }
+      }
+    }
+  }
+}

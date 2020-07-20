@@ -1,4 +1,8 @@
 <style lang="scss" scoped>
+#layout {
+  height: max-content;
+  min-height: 100%;
+}
 .logo-box {
   left: 0;
   right: 0;
@@ -203,9 +207,7 @@
     display: none;
   }
   .cd-top {
-    transform: scale(0.6);
-    right: 25 * 0.3px;
-    top: calc(-50vh + (50vh - (450) * 0.6px));
+    display: none;
   }
 }
 </style>
@@ -317,7 +319,7 @@ export default {
       }
     },
     moveTop () {
-      scrolMovePoint(0, 30)
+      scrolMovePoint(0, 0.1)
     },
     moveBottom () {
       const size = getEleSize("#id-top")

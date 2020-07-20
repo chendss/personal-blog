@@ -475,22 +475,22 @@ export const getEleSize = function (selector) {
 * @param {String} selector 运动区域选择器 （宽高必须大于parent）
 */
 export const mouseMutex = function (parentSelector, selector, hz = 60) {
-  const parent = q(parentSelector)
-  const moveDom = q(selector)
-  // const [pw, ph] = getEleSize(parentSelector)
-  // const [w, h] = getEleSize(selector)
-  // joinStyle(moveDom, `margin-left:${(pw - w) / 2}px;margin-top:${(ph - h) / 2}px`)
-  const render = function (event) {
-    const [width, height] = getEleSize(parentSelector)
-    const center = { x: width / 2, y: height / 2 }
-    const x = get(event, 'clientX', 0)
-    const y = get(event, 'clientY', 0)
-    const proportion = 20
-    let dx = ((-1 * (x - center['x'])) / proportion).toFixed(4)
-    let dy = (-1 * (y - center['y']) / proportion).toFixed(4)
-    moveDom.setAttribute('style', `transform: translate3D(${dx}px,${dy}px,0px);`)
+  if (process.client) {
+    const parent = q(parentSelector)
+    if (parent == null) return
+    const moveDom = q(selector)
+    const render = function (event) {
+      const [width, height] = getEleSize(parentSelector)
+      const center = { x: width / 2, y: height / 2 }
+      const x = get(event, 'clientX', 0)
+      const y = get(event, 'clientY', 0)
+      const proportion = 20
+      let dx = ((-1 * (x - center['x'])) / proportion).toFixed(4)
+      let dy = (-1 * (y - center['y']) / proportion).toFixed(4)
+      moveDom.setAttribute('style', `transform: translate3D(${dx}px,${dy}px,0px);`)
+    }
+    parent.addEventListener('mousemove', throttle(render, 1000 / hz))
   }
-  parent.addEventListener('mousemove', throttle(render, 1000 / hz))
 }
 
 /**
@@ -531,11 +531,11 @@ export const today = function (d) {
  * @param {number} [dy=window.outerHeight / 6] 偏移量
  * @param {number} [time=5] 动画一帧的时间
  */
-export const scrolMove = function (ele, dy = window.outerHeight / 6, time = 5) {
+export const scrolMove = function (ele, speed = 1, dy = window.outerHeight / 6, time = 5) {
   let total = docTop(ele) - dy
   let distance = document.documentElement.scrollTop || document.body.scrollTop
   // 计算每一小段的距离
-  let step = total / 50
+  let step = total / (50 * speed)
   let scrolMoveInterval = setInterval(() => {
     if (distance < total) {
       distance += step; // 移动一小段
@@ -555,6 +555,20 @@ export const scrolMove = function (ele, dy = window.outerHeight / 6, time = 5) {
  * @returns
  */
 export const docTop = function (ele) {
+  let top = ele.offsetTop
+  while (ele.offsetParent != null && (ele = ele.offsetParent)) {
+    top += ele.offsetTop
+  }
+  return top
+}
+
+/**
+ * 获得元素距离文档左边距离
+ *
+ * @param {HTMLElement} ele
+ * @returns
+ */
+export const docLeft = function (ele) {
   let top = ele.offsetTop
   while (ele.offsetParent != null && (ele = ele.offsetParent)) {
     top += ele.offsetTop
@@ -584,6 +598,10 @@ export const scrolMovePoint = function (y, speed = 50, time = 5) {
     setTimeout(() => {
       distance += dy * n
       if ((distance * n) >= (y * n)) {
+        if (n < 0) {
+          set(document, 'documentElement.scrollTop', distance - 50)
+          set(document, 'body.scrollTop', distance - 50)
+        }
         return
       } else {
         set(document, 'documentElement.scrollTop', distance)
@@ -593,10 +611,10 @@ export const scrolMovePoint = function (y, speed = 50, time = 5) {
     }, time)
   }
   if (y > distance) {
-    const dy = (y - distance) / speed
+    const dy = (y - distance) * speed
     move(dy)
   } else {
-    const dy = (distance - y) / speed
+    const dy = (distance - y) * speed
     move(dy, -1)
   }
 }
