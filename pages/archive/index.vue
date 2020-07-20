@@ -17,7 +17,7 @@
               <li v-for="(item, j) in group[key][ident]"
                 :key="j">
                 {{(new Date(item.time)).getDate()}}日
-                <nuxt-link :to="`/article?id=${item.id}`">{{item.title}}</nuxt-link>
+                <nuxt-link :to="`/article?articleId=${item.id}`">{{item.title}}</nuxt-link>
               </li>
             </ul>
           </li>

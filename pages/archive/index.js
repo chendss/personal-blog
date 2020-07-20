@@ -13,7 +13,6 @@ export default {
       pre[key] = this.groupMonth(this.group[key])
       return pre
     }, {})
-    console.log('真的吗', this.group)
   },
   methods: {
     groupMonth (yearData) {
