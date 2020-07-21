@@ -1,4 +1,5 @@
 import axios from "axios"
+import Effects from '../../static/utils/canvas'
 import { throttle } from 'lodash'
 import Particles from '@/components/Particles'
 import { markDownToc, timestapToDate, docTop, scrollPoint, getEleSize, scrolMovePoint } from '../../static/utils'
@@ -18,6 +19,7 @@ export default {
     this.toc = markDownToc(html)
     this.showToc = this.toc.filter(t => t.level < 4)
     window.addEventListener('scroll', throttle(this.scroll, 30))
+    this.Effects = new Effects('#id-content-canvas')
   },
   methods: {
     timestapToDate,
@@ -34,7 +36,7 @@ export default {
       if (dom != null) {
         const domCopy = document.querySelector('#id-toc-copy')
         const [width, height] = getEleSize('#id-cover-article')
-        this.topLeft = domCopy.getBoundingClientRect().left
+        this.topLeft = domCopy.getBoundingClientRect().left || this.topLeft
         if (scrollPoint() > height + 16) {
           dom.setAttribute('style', `left:${this.topLeft}px;top:8px;position: fixed;`)
           domCopy.setAttribute('fixed', 'true')

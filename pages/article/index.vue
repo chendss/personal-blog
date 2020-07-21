@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="content">
-      <Particles class="content-canvas"></Particles>
+      <div id="id-content-canvas"></div>
       <div class="markdown"
         id="id-markdown-content">
         <le-preview ref="md-preview"

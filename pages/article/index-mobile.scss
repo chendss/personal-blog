@@ -25,7 +25,9 @@
     .content {
 
 
-      .content-canvas {}
+      #id-content-canvas {
+        display: none;
+      }
 
       .markdown {
         width  : 100%;

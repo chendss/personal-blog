@@ -3,7 +3,12 @@
 
 <template>
   <div class="resume-box">
-
+    <div class="resume">
+      <le-preview ref="md-preview"
+        hljs-css="atomOneDark"
+        :is-md="true"
+        :value="resume.resume"></le-preview>
+    </div>
   </div>
 </template>
 

@@ -64,6 +64,17 @@ body,
   }
 }
 
+@media screen and (max-width: 1024px) {
+
+  html,
+  body,
+  #__nuxt,
+  #__layout,
+  #layout {
+    overflow-x: hidden;
+  }
+}
+
 #layout>div:first-child {
   width: 100%;
 }
