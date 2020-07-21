@@ -3,29 +3,29 @@
 
   .layer {
     height  : 40vh;
-    overflow: hidden;
-    overflow: hidden;
     display : flex;
+    overflow: hidden;
+    overflow: hidden;
     position: relative;
 
     img {
-      width    : 100%;
       top      : 0;
       left     : 0;
       bottom   : 0;
       right    : 0;
+      z-index  : -1;
+      width    : 100%;
       margin   : auto;
       height   : 100%;
       position : absolute;
-      z-index  : -1;
       max-width: none !important;
     }
 
     .vertical {
+      z-index        : 1;
       width          : 80%;
       display        : flex;
       margin         : auto;
-      z-index        : 1;
       align-items    : center;
       justify-content: center;
       flex-direction : column;
@@ -46,23 +46,23 @@
         color          : #fff;
 
         .time {
-          font-size    : 16px;
           font-weight  : 700;
-          color        : rgba(255, 255, 255, .8);
-          font-family  : Noto Sans SC, serif;
-          text-shadow  : 0 4px 6px rgba(0, 0, 0, .5);
           margin-bottom: 8px;
+          font-size    : 16px;
+          font-family  : Noto Sans SC, serif;
+          color        : rgba(255, 255, 255, .8);
+          text-shadow  : 0 4px 6px rgba(0, 0, 0, .5);
         }
 
         .tag {
           padding         : 4px;
-          height          : 22px;
           font-weight     : 500;
+          height          : 22px;
           font-size       : 12px;
-          width           : max-content;
           align-items     : center;
           justify-content : center;
           background-color: #6fa3ef;
+          width           : max-content;
           display         : inline-flex;
         }
 
@@ -75,22 +75,23 @@
 
   .content {
     display        : flex;
-    position       : relative;
-    justify-content: center;
     padding-top    : 16px;
+    padding-bottom : 16px;
+    justify-content: center;
+    position       : relative;
 
     .content-canvas {
-      position: absolute;
       width   : 100%;
+      position: absolute;
     }
 
     .markdown {
       z-index         : 1;
       width           : 60vw;
-      background-color: rgba(255, 255, 255, .9);
-      padding         : 0 20px 30px;
-      box-shadow      : 0 0 20px 10px rgba(220, 220, 220, .3);
       margin-right    : 16px;
+      padding         : 0 20px 30px;
+      background-color: rgba(255, 255, 255, .9);
+      box-shadow      : 0 0 20px 10px rgba(220, 220, 220, .3);
     }
 
     .toc-copy {

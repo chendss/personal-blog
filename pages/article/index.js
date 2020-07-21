@@ -15,11 +15,9 @@ export default {
   components: { Particles },
   mounted () {
     const html = this.article.html
-    console.log('为什么会这样', this.article)
     this.toc = markDownToc(html)
     this.showToc = this.toc.filter(t => t.level < 4)
     window.addEventListener('scroll', throttle(this.scroll, 30))
-    this.$nextTick(() => this.load = true)
   },
   methods: {
     timestapToDate,

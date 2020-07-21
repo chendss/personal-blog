@@ -1,7 +1,7 @@
 <template>
   <vue-particles color="#292929"
     :moveSpeed="4"
-    v-if="!isMobile"
+    v-if="!isMobile&&load"
     :linesWidth="1"
     hoverMode="grab"
     :particleSize="2"
@@ -23,13 +23,17 @@ import { isMobile } from "../static/utils"
 export default {
   data () {
     return {
-      isMobile: false
+      isMobile: false,
+      load: false
     }
   },
   created () {
     if (process.client) {
       this.isMobile = isMobile()
     }
+  },
+  mounted () {
+    this.$nextTick(() => this.load = true)
   }
 }
 </script>
