@@ -4,20 +4,29 @@
 <template>
   <div>
     <div class="archives">
-      <div class="year-box"
+      <div
+        class="year-box"
         v-for="(key, index) in Object.keys(group)"
-        :key="index">
+        :key="index"
+      >
         <h1>{{key}} 年</h1>
-        <ul class="al_mon_list"
+        <ul
+          class="al_mon_list"
           v-for="(ident, i) in Object.keys(group[key])"
-          :key="i">
+          :key="i"
+        >
           <li>
             <span>{{ident}}月<em>（{{group[key][ident].length}}篇文章）</em></span>
             <ul class="al-post-list">
-              <li v-for="(item, j) in group[key][ident]"
-                :key="j">
+              <li
+                v-for="(item, j) in group[key][ident]"
+                :key="j"
+              >
                 {{(new Date(item.time)).getDate()}}日
-                <nuxt-link :to="`/article?articleId=${item.id}`">{{item.title}}</nuxt-link>
+                <a
+                  href="javascript:void(0)"
+                  @click="goUrl(item.id)"
+                >{{item.title}}</a>
               </li>
             </ul>
           </li>

@@ -119,3 +119,21 @@ html {
     }
   }
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: all .3s;
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
+}

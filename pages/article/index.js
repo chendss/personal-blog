@@ -1,7 +1,7 @@
 import axios from "axios"
 import { throttle } from 'lodash'
 import Particles from '@/components/Particles'
-import { markDownToc, timestapToDate, scrolMove, docTop, scrollPoint, getEleSize, scrolMovePoint } from '../../static/utils'
+import { markDownToc, timestapToDate, docTop, scrollPoint, getEleSize, scrolMovePoint } from '../../static/utils'
 
 export default {
   data () {
@@ -9,14 +9,17 @@ export default {
       toc: [],
       showToc: [],
       topLeft: 0,
+      load: false,
     }
   },
   components: { Particles },
   mounted () {
     const html = this.article.html
+    console.log('为什么会这样', this.article)
     this.toc = markDownToc(html)
     this.showToc = this.toc.filter(t => t.level < 4)
     window.addEventListener('scroll', throttle(this.scroll, 30))
+    this.$nextTick(() => this.load = true)
   },
   methods: {
     timestapToDate,

@@ -19,6 +19,9 @@ export default {
       const result = groupBy(yearData, y => (new Date(y.time).getMonth()))
       return result
     },
+    goUrl (id) {
+      this.$router.push(`/article?articleId=${id}`)
+    }
   },
   async asyncData ({ query }) {
     const listData = async function () {

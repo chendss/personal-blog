@@ -33,6 +33,7 @@
 }
 
 .nav {
+  max-width: 100vw;
   top: -100%;
   z-index: 3;
   width: 100%;
@@ -179,13 +180,13 @@
 
   .nav {
     &[packup="false"] {
+      max-width: 100vw;
     }
 
     .menu {
       width: 80vw;
       margin: 160px auto 0;
       flex-wrap: wrap;
-      justify-content: flex-start;
       .menu-item-box {
         .menu_item {
           font-size: 12px;
@@ -216,38 +217,56 @@
   <div id="layout">
     <nuxt class="nuxt" />
     <div class="logo-box">
-      <img src="/logo-home.png"
-        v-show="packUp==='true'" />
-      <img src="/logo.png"
-        v-show="packUp==='false'" />
-      <div class="menu"
-        @click="menuClick">
+      <img
+        src="/logo-home.png"
+        v-show="packUp==='true'"
+      />
+      <img
+        src="/logo.png"
+        v-show="packUp==='false'"
+      />
+      <div
+        class="menu"
+        @click="menuClick"
+      >
         <Icon :icon="packUp==='true'?'icon-menu':'icon-cha'"></Icon>
       </div>
     </div>
-    <div class="nav"
-      :packup="packUp">
-      <div id="menu-menu"
-        class="menu">
-        <div class="menu-item-box"
+    <div
+      class="nav"
+      :packup="packUp"
+    >
+      <div
+        id="menu-menu"
+        class="menu"
+      >
+        <div
+          class="menu-item-box"
           v-for="(item, index) in infos"
-          :key="index">
-          <Icon class="menu_item"
+          :key="index"
+        >
+          <Icon
+            class="menu_item"
             @click="navClick(item)"
             rel="noopener noreferrer"
             :icon="item.icon"
-            :text="item.name"></Icon>
+            :text="item.name"
+          ></Icon>
         </div>
       </div>
       <p class="copyright">© 少爷. {{today}}.</p>
     </div>
-    <Icon icon="icon-xiangxia"
+    <Icon
+      icon="icon-xiangxia"
       class="arrow-down"
-      @click="moveBottom"></Icon>
-    <a class="cd-top"
+      @click="moveBottom"
+    ></Icon>
+    <a
+      class="cd-top"
       id="id-cd-top"
       @click="moveTop"
-      :style="packUp==='true'?'':'display:none;'"></a>
+      :style="packUp==='true'?'':'display:none;'"
+    ></a>
   </div>
 </template>
 
@@ -277,11 +296,6 @@ export default {
           name: "归档",
           url: "/archive",
           icon: "icon-wenzhang1"
-        },
-        {
-          name: "分类",
-          url: "",
-          icon: "icon-fenlei"
         },
         {
           name: "个人简历",
@@ -330,8 +344,10 @@ export default {
     },
     navClick (item) {
       console.log("点击", item, this.$router)
-      this.$router.push(item.url)
       this.menuClick()
+      setTimeout(() => {
+        this.$router.push(item.url)
+      }, 330)
     }
   }
 }
