@@ -31,10 +31,10 @@
       flex-direction : column;
 
       .page-title {
-        color      : #fff;
-        text-shadow: 0 3px 6px rgba(0, 0, 0, .3);
         font-weight: 700;
+        color      : #fff;
         font-size  : 32px;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, .3);
       }
 
       .info {
@@ -85,10 +85,10 @@
       width           : 50vw;
       margin-right    : 16px;
       margin-left     : 10vw;
+      max-width       : 100vw;
       padding         : 16px 20px 30px;
       background-color: rgba(255, 255, 255, .9);
       box-shadow      : 0 0 20px 10px rgba(220, 220, 220, .3);
-      max-width       : 100vw;
     }
 
     .toc-copy {

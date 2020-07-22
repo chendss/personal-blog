@@ -3,14 +3,17 @@
 
 <template>
   <div class="resume-box">
-    <Effects></Effects>
+    <Effects top="0"
+      height="100%"></Effects>
+    <div class="info"
+      id="id-resume-info"></div>
     <div class="resume">
-      <le-preview
-        ref="md-preview"
-        hljs-css="atomOneDark"
-        :is-md="true"
-        :value="resume.resume"
-      ></le-preview>
+      <div class="resume-markdown">
+        <le-preview ref="md-preview"
+          hljs-css="atomOneDark"
+          :is-md="true"
+          :value="resume.resume"></le-preview>
+      </div>
     </div>
   </div>
 </template>

@@ -8,7 +8,7 @@
         id="id-cover-mask">
         <div class="layer"
           id="id-cover-layer">
-          <img src="https://ae01.alicdn.com/kf/H2505f877399c4bb3b28c4c62c3775134j.jpg">
+          <img :src="config.cover">
         </div>
       </div>
       <div id="id-vibrant-mask">

@@ -1,14 +1,29 @@
 .resume-box {
   display        : flex;
-  align-items    : center;
   justify-content: center;
+  margin-top     : (8*24)*1px;
+
+  .info {
+    z-index         : 1;
+    width           : 300px;
+    height          : 400px;
+    background-color: rgba($color: #c0e3e7, $alpha: 0.8);
+    box-shadow      : -4px 7px 15px 1px rgba(118, 95, 91, 0.34);
+    position        : fixed;
+    left            : 16px;
+  }
 
   .resume {
-    margin-top: (8*9)*1px;
-    padding   : 16px 8px;
-    width     : 60vw;
-    z-index   : 1;
-    background: rgba($color: #fff, $alpha: 0.5);
+    z-index         : 1;
+    position        : relative;
+    border-radius   : 5px;
+    width           : 960px;
+    border-width    : 1px;
+    border-style    : solid;
+    padding         : 16px 16px;
+    // box-shadow   : 2px 2px 4px #333333;
+    background      : rgba($color: #fff, $alpha: 0.9);
+    border-color    : #e6e6e6;
 
     /deep/ {
       h1 {
@@ -16,5 +31,7 @@
         justify-content: center;
       }
     }
+
+    .resume-markdown {}
   }
 }
