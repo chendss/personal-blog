@@ -1,9 +1,12 @@
 import axios from "axios"
+import Effects from '@/components/Effects'
+
 export default {
   data () {
     return {
     }
   },
+  components: { Effects },
   mounted () {
     console.log('object', this.resume)
   },

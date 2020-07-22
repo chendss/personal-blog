@@ -3,11 +3,14 @@
 
 <template>
   <div class="resume-box">
+    <Effects></Effects>
     <div class="resume">
-      <le-preview ref="md-preview"
+      <le-preview
+        ref="md-preview"
         hljs-css="atomOneDark"
         :is-md="true"
-        :value="resume.resume"></le-preview>
+        :value="resume.resume"
+      ></le-preview>
     </div>
   </div>
 </template>

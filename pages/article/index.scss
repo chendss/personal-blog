@@ -80,19 +80,6 @@
     justify-content: center;
     position       : relative;
 
-    #id-content-canvas {
-      width   : 100%;
-      position: fixed;
-      height  : 60vh;
-      top     : calc(40vh + 16px);
-
-      /deep/ {
-        #bgCanvas {
-          position: relative !important;
-        }
-      }
-    }
-
     .markdown {
       z-index         : 1;
       width           : 50vw;

@@ -4,7 +4,17 @@
   justify-content: center;
 
   .resume {
-    padding: 16px 8px;
-    width  : 50vw;
+    margin-top: (8*9)*1px;
+    padding   : 16px 8px;
+    width     : 60vw;
+    z-index   : 1;
+    background: rgba($color: #fff, $alpha: 0.5);
+
+    /deep/ {
+      h1 {
+        display        : flex;
+        justify-content: center;
+      }
+    }
   }
 }

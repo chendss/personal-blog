@@ -1,5 +1,5 @@
 import axios from "axios"
-import Effects from '../../static/utils/canvas'
+import Effects from '@/components/Effects'
 import { throttle } from 'lodash'
 import Particles from '@/components/Particles'
 import { markDownToc, timestapToDate, docTop, scrollPoint, getEleSize, scrolMovePoint } from '../../static/utils'
@@ -13,13 +13,12 @@ export default {
       load: false,
     }
   },
-  components: { Particles },
+  components: { Particles, Effects },
   mounted () {
     const html = this.article.html
     this.toc = markDownToc(html)
     this.showToc = this.toc.filter(t => t.level < 4)
     window.addEventListener('scroll', throttle(this.scroll, 30))
-    this.Effects = new Effects('#id-content-canvas')
   },
   methods: {
     timestapToDate,
