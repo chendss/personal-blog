@@ -1,0 +1,10 @@
+.resume-box {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+
+  .resume {
+    padding: 16px 8px;
+    width  : 50vw;
+  }
+}
