@@ -55,7 +55,8 @@ html,
 body,
 #__nuxt,
 #__layout,
-#layout {
+#layout,
+.nuxt {
   height    : max-content;
   min-height: 100vh;
 

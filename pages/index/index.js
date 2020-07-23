@@ -3,11 +3,13 @@ import HomeMain from './HomeMain'
 import Icon from '@/components/Icon'
 import Particles from '@/components/Particles'
 import { mouseMutex, today, get } from '@/static/utils'
+import EasyTyper from '../../static/utils/easyTyper'
 
 export default {
   data () {
     return {
       today: today(),
+      obj: { output: '' },
     }
   },
   components: { Icon, Particles, HomeMain },
@@ -19,6 +21,7 @@ export default {
   },
   mounted () {
     mouseMutex('#id-vibrant-mask', '#id-cover-layer', 120)
+    this.typed = new EasyTyper(this.day.text, this.obj)
   },
   methods: {
   },

@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "axios": "^0.19.2",
     "cross-env": "^5.2.0",
+    "easy-typer-js": "^2.1.0",
     "element-ui": "2.13.2",
     "express": "^4.16.4",
     "koa": "^2.11.0",
@@ -33,6 +34,7 @@
     "nuxt": "^2.0.0",
     "sass-loader": "^8.0.2",
     "vue-particles": "^1.0.9",
+    "vue-typer": "^1.2.0",
     "vuex": "^3.4.0",
     "xss": "^1.0.6"
   },

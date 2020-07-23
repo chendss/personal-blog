@@ -3,56 +3,40 @@
 
 <template>
   <div class="article-box">
-    <div
-      class="layer"
-      id="id-cover-article"
-    >
+    <div class="layer"
+      id="id-cover-article">
       <img :src="article.cover" />
       <div class="vertical">
-        <h1 class="page-title">{{article.title}}</h1>
+        <h1 class="page-title">{{obj.output}}</h1>
         <div class="info">
           <p class="time">发表于{{timestapToDate(article.time)}}</p>
           <div class="tag-box">
-            <div
-              class="tag"
+            <div class="tag"
               v-for="tag in article.tagLabels"
-              :key="tag"
-            >{{tag}}</div>
+              :key="tag">{{tag}}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="content">
-      <Effects
-        height="60vh"
-        top="calc(40vh + 16px)"
-      ></Effects>
-      <div
-        class="markdown"
-        id="id-markdown-content"
-      >
-        <le-preview
-          ref="md-preview"
+      <Effects height="60vh"
+        top="calc(40vh + 16px)"></Effects>
+      <div class="markdown"
+        id="id-markdown-content">
+        <le-preview ref="md-preview"
           hljs-css="atomOneDark"
           :is-md="true"
-          :value="article.html"
-        ></le-preview>
+          :value="article.html"></le-preview>
       </div>
-      <div
-        class="toc-copy"
-        id="id-toc-copy"
-      ></div>
-      <div
-        class="toc"
-        id="id-toc"
-      >
-        <div
-          class="toc-item"
+      <div class="toc-copy"
+        id="id-toc-copy"></div>
+      <div class="toc"
+        id="id-toc">
+        <div class="toc-item"
           :level="item.level"
           v-for="item in showToc"
           :key="item.code"
-          @click="tocItemClick(item)"
-        >{{item.code}}</div>
+          @click="tocItemClick(item)">{{item.code}}</div>
       </div>
     </div>
   </div>

@@ -23,9 +23,8 @@
       </div>
       <div id="post0">
         <p>{{today}}</p>
-        <h2><a data-id="6643"
-            class="posttitle">{{day.name}}</a></h2>
-        <p class="content">{{day.text}}</p>
+        <h2><a class="posttitle">{{day.name}}</a></h2>
+        <p class="content">{{obj.output}}</p>
       </div>
     </div>
     <HomeMain :remote="remote"></HomeMain>

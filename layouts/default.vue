@@ -15,6 +15,7 @@
 
   img {
     width: 64px;
+    cursor: pointer;
   }
 
   .menu {
@@ -218,8 +219,10 @@
     <nuxt class="nuxt" />
     <div class="logo-box">
       <img src="/logo-home.png"
+        @click="goHome()"
         v-show="home===true" />
       <img src="/logo.png"
+        @click="goHome()"
         v-show="home===false" />
       <div class="menu"
         @click="menuClick">
@@ -341,6 +344,9 @@ export default {
       setTimeout(() => {
         this.$router.push(item.url)
       }, 330)
+    },
+    goHome () {
+      this.$router.push('/')
     }
   }
 }

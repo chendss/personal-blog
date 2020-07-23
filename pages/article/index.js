@@ -3,6 +3,7 @@ import Effects from '@/components/Effects'
 import { throttle } from 'lodash'
 import Particles from '@/components/Particles'
 import { markDownToc, timestapToDate, docTop, scrollPoint, getEleSize, scrolMovePoint } from '../../static/utils'
+import EasyTyper from '../../static/utils/easyTyper'
 
 export default {
   data () {
@@ -11,6 +12,7 @@ export default {
       showToc: [],
       topLeft: 0,
       load: false,
+      obj: { output: '' },
     }
   },
   components: { Particles, Effects },
@@ -19,6 +21,7 @@ export default {
     this.toc = markDownToc(html)
     this.showToc = this.toc.filter(t => t.level < 4)
     window.addEventListener('scroll', throttle(this.scroll, 30))
+    this.typed = new EasyTyper(this.article.title, this.obj)
   },
   methods: {
     timestapToDate,

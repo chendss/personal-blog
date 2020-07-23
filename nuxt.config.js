@@ -68,7 +68,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/, /^vue-particles/, /^vue-markdown/, /^le-markdown-editor/, /^vue-meditor/],
+    transpile: [/^element-ui/, /^vue-particles/, /^vue-markdown/, /^le-markdown-editor/, /^vue-meditor/, /^vue-typer/],
     /*
     ** You can extend webpack config here
     */
