@@ -253,16 +253,16 @@ const RibbonsCreate = function () {
 class Effects {
   constructor(selector, params = {}) {
     this.config = merge({
+      strokeSize: 0,
+      colorAlpha: .5,
+      ribbonCount: 3,
+      colorCycleSpeed: 5,
+      parallaxAmount: -.2,
+      animateSections: !0,
+      horizontalSpeed: 200,
       colorSaturation: "60%",
       colorBrightness: "50%",
-      colorAlpha: .5,
-      colorCycleSpeed: 5,
       verticalPosition: "random",
-      horizontalSpeed: 200,
-      ribbonCount: 3,
-      strokeSize: 0,
-      parallaxAmount: -.2,
-      animateSections: !0
     }, params)
     const Ribbons = RibbonsCreate()
     this.ribbons = new Ribbons(this.config, selector)

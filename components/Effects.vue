@@ -40,7 +40,7 @@ export default {
   },
   props: ['height', 'top'],
   mounted () {
-    this.Effects = new Effects(`#${this.id}`)
+    this.Effects = new Effects(`#${this.id}`, { ribbonCount: 5 })
   }
 }
 </script>
