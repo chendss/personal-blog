@@ -7,7 +7,7 @@ class EasyTyper {
       sleep: 0,
       speed: 100,
       isEnd: false,
-      backSpeed: 60,
+      backSpeed: 30,
       type: 'normal',
       singleBack: false,
       sentencePause: false,
