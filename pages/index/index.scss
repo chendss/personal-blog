@@ -1,11 +1,11 @@
 .home-page {
-  position: relative;
   width   : 100%;
+  position: relative;
 
   .top {
-    position: relative;
     width   : 100%;
     overflow: hidden;
+    position: relative;
 
     .mask {
       width              : 100%;
@@ -17,23 +17,23 @@
       transform          : translate3d(0px, 0px, 0px);
 
       .layer {
-        width              : 100%;
-        top                : 0px;
-        left               : 0px;
         margin             : 0;
         padding            : 0;
+        top                : 0px;
+        left               : 0px;
+        width              : 100%;
         display            : flex;
         list-style         : none;
         margin-top         : -50px;
         margin-left        : -50px;
-        position           : relative;
         align-items        : center;
         font-weight        : normal;
         justify-content    : center;
+        backface-visibility: hidden;
+        position           : relative;
+        transform-style    : preserve-3d;
         width              : calc(100% + 100px);
         height             : calc(100% + 100px);
-        backface-visibility: hidden;
-        transform-style    : preserve-3d;
         transform          : translate(0, 50px);
 
         img {
@@ -46,11 +46,11 @@
     }
 
     #id-vibrant-mask {
-      position: absolute;
       top     : 0;
       left    : 0;
       width   : 100%;
       height  : 100%;
+      position: absolute;
 
       .vibrant-div {
         top             : 0;
