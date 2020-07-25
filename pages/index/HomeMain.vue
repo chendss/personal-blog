@@ -122,6 +122,7 @@
           left: 0;
           right: 0;
           bottom: 0;
+          width: 100%;
           margin: auto;
           position: absolute;
           transition: all 0.5s;
