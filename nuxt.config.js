@@ -1,7 +1,7 @@
 
 module.exports = {
   env: {
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:10098' : 'http://127.0.0.1:10098'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:10098' : 'https://adminserver.dashao:me:2'
   },
   port: 9962,
   host: '0.0.0.0',
