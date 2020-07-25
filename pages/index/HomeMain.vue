@@ -12,14 +12,15 @@
     align-items: center;
 
     .article {
+      position: relative;
       z-index: 2;
-      margin-top: 8px;
-      margin-bottom: 8px;
-      max-width: 80vw;
-      display: flex;
-      border-radius: 10px;
       width: 960px;
+      display: flex;
+      margin-top: 8px;
+      max-width: 80vw;
       cursor: pointer;
+      margin-bottom: 8px;
+      border-radius: 10px;
       transition: box-shadow 0.3s ease;
       background-color: rgba(255, 255, 255, 1);
       box-shadow: 0 1px 20px -6px rgba(0, 0, 0, 0.4);
@@ -115,8 +116,14 @@
         flex: 1;
         overflow: hidden;
         cursor: pointer;
+        position: relative;
 
         img {
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          position: absolute;
           transition: all 0.5s;
         }
       }
