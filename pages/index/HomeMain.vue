@@ -37,9 +37,9 @@
 
       .left {
         flex: 1;
+        padding: 16px;
         display: inline-flex;
         flex-direction: column;
-        padding: 16px;
 
         .icon-box {
           &[type="time"] {
@@ -61,10 +61,10 @@
 
         .title {
           margin: 16px 0;
-          font-size: 20px;
-          font-weight: 600;
           color: #504e4e;
+          font-size: 20px;
           cursor: pointer;
+          font-weight: 600;
 
           &:hover {
             color: #fe9600 !important;
@@ -73,10 +73,10 @@
         }
 
         .focus {
-          display: flex;
-          align-items: center;
           color: #888;
+          display: flex;
           font-size: 14px;
+          align-items: center;
           margin-bottom: 16px;
 
           .icon-box {
@@ -88,21 +88,21 @@
         }
 
         .abstract {
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 5;
+          font-size: 12px;
           overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
           margin: 20px 0px 40px;
           color: rgba(0, 0, 0, 0.66);
-          font-size: 12px;
+          -webkit-box-orient: vertical;
         }
 
         .operation {
           margin-top: auto;
 
           svg {
-            font-size: 24px;
             color: #666;
+            font-size: 24px;
             cursor: pointer;
           }
 
@@ -114,8 +114,8 @@
 
       .right {
         flex: 1;
-        overflow: hidden;
         cursor: pointer;
+        overflow: hidden;
         position: relative;
 
         img {
