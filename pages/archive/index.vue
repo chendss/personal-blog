@@ -5,16 +5,16 @@
   <div>
     <div class="archives">
       <div class="year-box"
-        v-for="(key, index) in Object.keys(group)"
-        :key="index">
-        <h1>{{key}} 年</h1>
+        v-for="groupItem in group"
+        :key="groupItem.key">
+        <h1>{{groupItem.key}} 年</h1>
         <ul class="al_mon_list"
-          v-for="(ident, i) in Object.keys(group[key])"
+          v-for="(ident, i) in Object.keys(groupItem.value)"
           :key="i">
           <li>
-            <span>{{ident}}月<em>（{{group[key][ident].length}}篇文章）</em></span>
+            <span>{{ident}}月<em>（{{groupItem.value[ident].length}}篇文章）</em></span>
             <ul class="al-post-list">
-              <li v-for="(item, j) in group[key][ident]"
+              <li v-for="(item, j) in groupItem.value[ident]"
                 :key="j">
                 {{(new Date(item.time)).getDate()}}日
                 <a href="javascript:void(0)"

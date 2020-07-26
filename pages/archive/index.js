@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { groupBy, sort } from 'lodash'
+import { groupBy, sortBy } from 'lodash'
 
 export default {
   data () {
@@ -9,10 +9,20 @@ export default {
   },
   mounted () {
     this.group = groupBy(this.list, l => (new Date(l.time).getFullYear()))
-    this.group = Object.keys(this.group).reduce((pre, key) => {
-      pre[key] = this.groupMonth(this.group[key])
+    const sortList = Object.keys(this.group)
+    sortList.sort((o1, o2) => {
+      if (Number(o1) < Number(o2)) {
+        return 1
+      } else if (Number(o1) > Number(o2)) {
+        return -1
+      }
+      return 0
+    })
+    this.group = sortList.reduce((pre, key) => {
+      pre.push({ key, value: this.groupMonth(this.group[key]) })
       return pre
-    }, {})
+    }, [])
+    console.log('fuck', this.group)
   },
   methods: {
     groupMonth (yearData) {
