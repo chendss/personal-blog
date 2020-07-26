@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { groupBy } from 'lodash'
+import { groupBy, sort } from 'lodash'
 
 export default {
   data () {
