@@ -2,7 +2,7 @@ import axios from 'axios'
 import HomeMain from './HomeMain'
 import Icon from '@/components/Icon'
 import Particles from '@/components/Particles'
-import { mouseMutex, today, get } from '@/static/utils'
+import { mouseMutex, today, get, log } from '@/static/utils'
 import EasyTyper from '../../static/utils/easyTyper'
 
 export default {

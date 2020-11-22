@@ -1,4 +1,16 @@
 
+const analyze = function () {
+  if (process.env.analyze === 'analyze') {
+    return {
+      analyze: true,
+      assetFilter: function (assetFilename) {
+        return assetFilename.endsWith('.js');
+      }
+    }
+  }
+  return {}
+}
+
 module.exports = {
   env: {
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:10098' : 'https://adminserver.dashao.me:2'
@@ -34,14 +46,12 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
     'assets/index.scss',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '@/plugins/element-ui', ssr: false },
     '~/plugins/axios.js',
   ],
   /*
@@ -49,7 +59,7 @@ module.exports = {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
   ],
   /*
   ** Nuxt.js modules
@@ -68,6 +78,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    ...analyze(),
     transpile: [/^element-ui/, /^vue-particles/, /^vue-markdown/, /^le-markdown-editor/, /^vue-meditor/, /^vue-typer/, /^static/, /^easy-typer-js/],
     /*
     ** You can extend webpack config here

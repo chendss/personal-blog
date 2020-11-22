@@ -263,7 +263,7 @@ import {
   scrollPoint,
   scrolMovePoint
 } from "@/static/utils"
-import { throttle } from "lodash"
+import { throttle } from "lodash-es"
 import Icon from "@/components/Icon"
 export default {
   name: "defaultLayout",

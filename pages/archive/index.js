@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { groupBy, sortBy } from 'lodash'
+import { groupBy, sortBy } from 'lodash-es'
 
 export default {
   data () {
@@ -22,7 +22,6 @@ export default {
       pre.push({ key, value: this.groupMonth(this.group[key]) })
       return pre
     }, [])
-    console.log('fuck', this.group)
   },
   methods: {
     groupMonth (yearData) {

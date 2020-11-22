@@ -1,5 +1,5 @@
 import Nedb from 'nedb'
-import { mergeWith, get as lodashGet, isObject, set, sum, throttle, groupBy, countBy } from 'lodash'
+import { mergeWith, get as lodashGet, isObject, set, sum, throttle, groupBy, countBy } from 'lodash-es'
 
 export const log = function () {
   console.log(...arguments)
