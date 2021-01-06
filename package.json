@@ -17,7 +17,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@types/lodash-es": "^4.17.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^5.2.0",
     "easy-typer-js": "^2.1.0",
